@@ -1,0 +1,187 @@
+/* Data Models demo layout. Frames, buttons and controls come from app:/data/UI/Shared/theme.rcss. */
+
+body {
+	background-color: rgba(10, 6, 2, 150);
+}
+
+#header {
+	position: absolute;
+	left: 0;
+	top: 20dp;
+	width: 100vw;
+	text-align: center;
+}
+
+#shop {
+	position: absolute;
+	left: 5vw;
+	top: 120dp;
+	width: 54vw;
+}
+
+#player {
+	position: absolute;
+	right: 5vw;
+	top: 120dp;
+	width: 33vw;
+}
+
+#shop .section, #player .section:first-child {
+	margin-top: 0dp;
+}
+
+.small {
+	font-size: 14dp;
+}
+
+label.toggle {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	font-size: 15dp;
+	color: #ecd7ad;
+}
+
+label.toggle input.checkbox {
+	margin-right: 6dp;
+}
+
+/* ---------- shop rows (data-for clones) ---------- */
+
+.item {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 8dp 12dp 8dp 8dp;
+	margin-bottom: 8dp;
+}
+
+/* The icon sits in a wooden slot; 34 px pixel art at 2x. */
+.slot {
+	width: 80dp;
+	height: 80dp;
+	margin-right: 14dp;
+	decorator: ninepatch(square-brown, square-brown-inner);
+}
+
+.slot img {
+	display: block;
+	width: 68dp;
+	height: 68dp;
+	margin: 4dp 0dp 0dp 6dp;
+}
+
+.item-text {
+	flex: 1;
+}
+
+.item-name {
+	font-family: "Kenney Future";
+	font-size: 18dp;
+	color: #5c3d26;
+}
+
+/* data-class-rare / data-class-epic colour the name and the rarity line. */
+.item-rarity {
+	font-size: 13dp;
+	color: #8a6a4a;
+}
+
+.item.rare .item-name, .item.rare .item-rarity { color: #2b62a8; }
+.item.epic .item-name, .item.epic .item-rarity { color: #7b3fa0; }
+
+.owned {
+	font-size: 18dp;
+	color: #2f7d3a;
+	margin-left: 6dp;
+}
+
+.item-info {
+	font-size: 13dp;
+	color: #7a5a3c;
+	margin-top: 2dp;
+}
+
+.price {
+	width: 120dp;
+	text-align: right;
+	font-size: 22dp;
+	color: #7a4f2c;
+	margin-right: 10dp;
+}
+
+.price img {
+	width: 34dp;
+	height: 34dp;
+	margin-right: 4dp;
+	vertical-align: middle;
+}
+
+/* data-class-locked: the player cannot afford it. */
+.item.locked .price { color: #b03a2e; }
+
+.item button {
+	margin-left: 8dp;
+	padding: 7dp 14dp 11dp 14dp;
+	font-size: 14dp;
+}
+
+.item button:active {
+	padding: 9dp 14dp 9dp 14dp;
+}
+
+/* ---------- player ---------- */
+
+.purse-coin {
+	width: 68dp;
+	height: 68dp;
+	margin-right: 10dp;
+}
+
+#gold {
+	font-size: 44dp;
+	color: #ffe7a8;
+	font-effect: outline(3dp #3b2414);
+}
+
+#player button {
+	margin-left: 8dp;
+}
+
+#message {
+	min-height: 22dp;
+	margin-top: 8dp;
+	font-size: 15dp;
+}
+
+progress {
+	margin: 4dp 0dp 6dp 0dp;
+}
+
+.form {
+	padding: 14dp 16dp;
+}
+
+.field {
+	margin-bottom: 10dp;
+}
+
+.field .label {
+	width: 110dp;
+	color: #5c3d26;
+}
+
+.field input.text, .field input.range, .field select {
+	flex: 1;
+}
+
+#greeting {
+	margin-top: 6dp;
+	font-size: 15dp;
+	color: #4a3423;
+}
+
+#greeting .name {
+	font-family: "Kenney Future";
+	color: #9a4a1c;
+}

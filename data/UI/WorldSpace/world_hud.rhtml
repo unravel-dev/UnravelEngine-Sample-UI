@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>World-Space HUD</title>
+    <link type="text/rcss" href="engine:/data/ui/rml.rcss"/>
+    <link type="text/rcss" href="app:/data/UI/Shared/atlas.rcss"/>
+    <link type="text/rcss" href="app:/data/UI/Shared/theme.rcss"/>
+    <link type="text/rcss" href="app:/data/UI/WorldSpace/world_hud.rcss"/>
+</head>
+<!--
+    The screen-space half of this demo. The kiosk and the nameplates are world-space documents
+    in the scene; this overlay is drawn over the game view. WorldMarkers.cs adds a marker per
+    target to #markers and moves it every frame with camera.WorldToScreenPoint.
+-->
+<body>
+    <button id="back" class="accent" onclick="BackToMenu"><img sprite="arrow-beige-left"/>Menu</button>
+
+    <div id="hint" class="panel">
+        <div class="title">World-Space UI</div>
+        <div class="parchment page">
+            <div>The kiosk and the nameplates are UI documents drawn into the scene (render mode World Space). Hover and click them like any UI.</div>
+            <div class="gap">The gold markers are a screen-space overlay placed from world positions every frame.</div>
+        </div>
+        <div class="row keys">
+            <img class="icon" sprite="glyph-target"/><span>Right-drag: orbit    Wheel: zoom    Esc: menu</span>
+        </div>
+    </div>
+
+    <div id="markers"/>
+</body>
+</html>

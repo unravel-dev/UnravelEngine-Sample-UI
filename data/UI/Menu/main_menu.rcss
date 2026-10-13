@@ -1,0 +1,102 @@
+/* Main menu layout. Frames, buttons and controls come from app:/data/UI/Shared/theme.rcss. */
+
+#menu {
+	position: absolute;
+	left: 6vw;
+	top: 8vh;
+	width: 600dp;
+	padding: 26dp 28dp;
+}
+
+#menu .title {
+	font-size: 46dp;
+}
+
+/* One parchment card per demo (data-for clones this element). */
+.demo {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 10dp;
+	padding: 10dp 14dp 10dp 10dp;
+	image-color: #e9dfcc;
+}
+
+.demo:hover {
+	image-color: #ffffff;
+}
+
+/* A wooden square holding the demo's item icon. */
+.demo-badge {
+	width: 80dp;
+	height: 80dp;
+	margin-right: 14dp;
+	decorator: ninepatch(square-brown, square-brown-inner);
+}
+
+/* Item icons are 34 px pixel art stored at 4x: 68 dp shows them at exactly 2x (at 1 px per dp). */
+.demo-badge img {
+	display: block;
+	width: 68dp;
+	height: 68dp;
+	margin: 4dp 0dp 0dp 6dp;
+}
+
+.demo-text {
+	flex: 1;
+}
+
+.demo-name {
+	font-family: "Kenney Future";
+	font-size: 19dp;
+	color: #5c3d26;
+}
+
+.demo-info {
+	font-size: 14dp;
+	color: #7a5a3c;
+	margin-top: 3dp;
+}
+
+.demo-arrow {
+	width: 22dp;
+	height: 21dp;
+	margin-left: 12dp;
+}
+
+.demo:hover .demo-arrow {
+	margin-left: 18dp;
+	margin-right: -6dp;
+}
+
+.setting {
+	margin-bottom: 8dp;
+}
+
+.setting .label {
+	width: 150dp;
+}
+
+.setting input.range {
+	flex: 1;
+}
+
+.setting .value {
+	width: 70dp;
+	text-align: right;
+	font-size: 20dp;
+	color: #ffe7a8;
+}
+
+.setting input.checkbox {
+	margin-right: 10dp;
+}
+
+.setting .state {
+	font-size: 14dp;
+}
+
+.footer {
+	margin-top: 20dp;
+	font-size: 14dp;
+}

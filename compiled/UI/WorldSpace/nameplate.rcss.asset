@@ -1,0 +1,42 @@
+/* Nameplate: a 360 x 150 world-space document floating above a target. */
+
+body {
+	font-size: 20dp;
+}
+
+#plate {
+	width: 100vw;
+	height: 100vh;
+	padding: 12dp 16dp;
+}
+
+.name {
+	font-family: "Kenney Future";
+	font-size: 22dp;
+	color: #ffe7a8;
+	font-effect: outline(2dp #3b2414);
+}
+
+.hp {
+	font-size: 24dp;
+	color: #9be08f;
+}
+
+.hp.low {
+	color: #ff8c7a;
+}
+
+progress {
+	margin: 8dp 0dp 10dp 0dp;
+}
+
+.buttons button {
+	flex: 1;
+	font-size: 17dp;
+	padding: 6dp 0dp 10dp 0dp;
+	margin-right: 8dp;
+}
+
+.buttons button:active {
+	padding: 8dp 0dp 8dp 0dp;
+}

@@ -1,0 +1,104 @@
+<html>
+<head>
+    <title>Data Models</title>
+    <link type="text/rcss" href="engine:/data/ui/rml.rcss"/>
+    <link type="text/rcss" href="app:/data/UI/Shared/atlas.rcss"/>
+    <link type="text/rcss" href="app:/data/UI/Shared/theme.rcss"/>
+    <link type="text/rcss" href="app:/data/UI/DataModels/shop.rcss"/>
+</head>
+<!--
+    Everything here reads the data model "shop", which ShopController.cs binds to a ShopModel
+    object. The script never looks an element up: it changes C# values, and the views below
+    follow. View attributes used on this page:
+        {{ expr }}            text            data-for="x, i : list"   repeat
+        data-if="expr"        display: none   data-visible="expr"      visibility: hidden
+        data-class-name="expr"                toggle a class
+        data-attr-name="expr" set attribute   data-value / data-checked   two-way controls
+        data-event-click="Method(args)"       call a public method of the bound object
+-->
+<body data-model="shop">
+    <button id="back" class="accent" onclick="BackToMenu"><img sprite="arrow-beige-left"/>Menu</button>
+
+    <div id="header">
+        <div class="title">The Merchant</div>
+        <div class="subtitle">One C# object, bound once. The markup reads it; controls write it back.</div>
+    </div>
+
+    <!-- ---------------- the shop ---------------- -->
+    <div id="shop" class="panel">
+        <div class="row">
+            <div class="section">Wares</div>
+            <div class="spacer"/>
+            <label class="toggle"><input type="checkbox" data-checked="showDetails"/> Details</label>
+        </div>
+
+        <!-- One row per ShopItem. "item" is the entry, "i" its index (passed to Buy / Sell). -->
+        <div class="item parchment" data-for="item, i : items"
+             data-class-rare="item.rarity == 'Rare'" data-class-epic="item.rarity == 'Epic'"
+             data-class-locked="item.price > gold">
+            <!-- data-attr-sprite shows the entry's icon from the atlas. -->
+            <div class="slot"><img data-attr-sprite="item.icon"/></div>
+            <div class="item-text">
+                <div class="item-name">{{ item.name }} <span class="owned number" data-if="item.owned > 0">x{{ item.owned }}</span></div>
+                <div class="item-rarity">{{ item.rarity }}</div>
+                <!-- data-if hides the element (display: none) while the expression is false. -->
+                <div class="item-info" data-if="showDetails">{{ item.description }}, {{ item.weight }} kg</div>
+            </div>
+            <div class="price number"><img sprite="item-coin"/>{{ item.price | gold }}</div>
+            <button class="accent" data-event-click="Buy(i)">Buy</button>
+            <!-- data-visible hides it but keeps its space, so the Buy buttons stay aligned. -->
+            <button data-visible="item.owned > 0" data-event-click="Sell(i)">Sell</button>
+        </div>
+    </div>
+
+    <!-- ---------------- the player ---------------- -->
+    <div id="player" class="panel">
+        <div class="section">Purse</div>
+        <div class="row">
+            <img class="purse-coin" sprite="item-coin"/>
+            <span id="gold" class="number">{{ gold | gold }}</span>
+            <div class="spacer"/>
+            <!-- Arguments can be literals as well as model values. -->
+            <button data-event-click="Earn(25)">+25</button>
+            <button data-event-click="Earn(100)">+100</button>
+        </div>
+        <div class="muted small">+{{ income }} every {{ incomeSeconds }} s from a script timer (it calls Dirty).</div>
+        <!-- A class from an expression: the message turns red for errors. -->
+        <div id="message" data-class-bad="messageIsError" data-class-good="!messageIsError">{{ message }}</div>
+
+        <div class="section">Bag</div>
+        <!-- data-attr-value feeds a number into an attribute: the bar fills with the weight. -->
+        <progress class="gold" max="100" data-attr-value="weight" data-class-low="weight > 80"/>
+        <div class="row small">
+            <span>{{ itemCount }} item{{ itemCount == 1 ? '' : 's' }}</span>
+            <div class="spacer"/>
+            <span class="number" data-class-warn="weight > 80">{{ weight }} / 100 kg</span>
+        </div>
+
+        <div class="section">Hero (two-way)</div>
+        <div class="parchment form">
+            <div class="row field">
+                <span class="label">Name</span>
+                <!-- data-value on a text field: typing writes playerName, the greeting follows. -->
+                <input type="text" data-value="playerName"/>
+            </div>
+            <div class="row field">
+                <span class="label">Difficulty</span>
+                <select data-value="difficulty">
+                    <option value="Easy">Easy</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Hard">Hard</option>
+                </select>
+            </div>
+            <div class="row field">
+                <span class="label">UI sounds</span>
+                <input type="range" min="0" max="1" step="0.05" data-value="uiVolume"/>
+            </div>
+            <div id="greeting">
+                <!-- Short logic fits in an expression; longer text comes from a C# property (priceNote). -->
+                Welcome, <span class="name">{{ playerName == '' ? 'stranger' : playerName }}</span>. {{ priceNote }}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

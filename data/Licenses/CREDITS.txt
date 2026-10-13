@@ -1,0 +1,13 @@
+UISample art credits. Every asset below is CC0 1.0 (public domain); no attribution is required,
+it is given here so the sources are easy to find.
+
+- Kenney UI Pack (RPG Expansion) - Kenney (www.kenney.nl) - https://kenney.nl/assets/ui-pack-rpg-expansion
+  Panels, buttons, bars, check and cross icons, arrows. Packed into data/UI/Shared/ui_atlas.png.
+- Kenney Game Icons - Kenney (www.kenney.nl) - https://kenney.nl/assets/game-icons
+  White UI glyphs (audio, music, exit, target...). Packed into the same atlas.
+- Kenney Fonts - Kenney (www.kenney.nl) - https://kenney.nl/assets/kenney-fonts
+  data/Fonts/KenneyFuture.ttf, data/Fonts/KenneyMiniSquare.ttf (renamed without spaces).
+- 496 pixel art icons for medieval/fantasy RPG - Henrique Lazarini (7Soul1) -
+  https://opengameart.org/content/496-pixel-art-icons-for-medievalfantasy-rpg
+  Item icons (potions, weapons, armour, map, coin...), stored 4x in the atlas.
+- Sounds in data/Audio were generated procedurally for this sample.

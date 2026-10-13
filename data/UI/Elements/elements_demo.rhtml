@@ -1,0 +1,73 @@
+<html>
+<head>
+    <title>Elements and Events</title>
+    <link type="text/rcss" href="engine:/data/ui/rml.rcss"/>
+    <link type="text/rcss" href="app:/data/UI/Shared/atlas.rcss"/>
+    <link type="text/rcss" href="app:/data/UI/Shared/theme.rcss"/>
+    <link type="text/rcss" href="app:/data/UI/Elements/elements_demo.rcss"/>
+</head>
+<!--
+    No data model here: ElementsDemo.cs finds elements by id with document.Q("#id") and changes
+    them directly. Ids are the contract between this markup and the script.
+-->
+<body>
+    <button id="back" class="accent" onclick="BackToMenu"><img sprite="arrow-beige-left"/>Menu</button>
+
+    <div id="header">
+        <div class="title">Elements &amp; Events</div>
+        <div class="subtitle">Every card is plain markup; ElementsDemo.cs queries it and reacts to events.</div>
+    </div>
+
+    <div id="cards">
+        <!-- 1. Query an element, change its text, react to clicks. -->
+        <div class="panel card">
+            <div class="section">1  Query + click</div>
+            <div class="row">
+                <img class="counter-icon" sprite="item-coin"/>
+                <span id="count" class="number">0</span>
+                <div class="spacer"/>
+                <button id="add-one" class="accent">+1</button>
+                <button id="reset" class="ghost">Reset</button>
+            </div>
+            <div class="code">Q("#count").text = ...    Q("#add-one").clicked += ...</div>
+        </div>
+
+        <!-- 2. Build elements from code and remove them again. -->
+        <div class="panel card">
+            <div class="section">2  Create + remove elements</div>
+            <div class="row">
+                <input id="task-text" type="text" placeholder="Type a quest, press Enter or Add"/>
+                <button id="task-add" class="accent">Add</button>
+            </div>
+            <div id="task-list"/>
+            <div id="task-empty" class="muted">No quests yet.</div>
+            <div class="code">CreateElement("div")    AppendChild(...)    Remove()</div>
+        </div>
+
+        <!-- 3. Classes, inline style and animation. -->
+        <div class="panel card">
+            <div class="section">3  Classes, style + animation</div>
+            <div class="row">
+                <div id="stage"><div id="orb"/></div>
+                <div class="column controls">
+                    <button id="toggle-glow">Toggle class "glow"</button>
+                    <button id="jump">Animate a jump</button>
+                    <div class="row">
+                        <span>Size</span>
+                        <!-- Steps of 34: the coin is 34 px pixel art, so every step is a whole multiple. -->
+                        <input id="size" type="range" min="34" max="136" step="34" value="68"/>
+                    </div>
+                </div>
+            </div>
+            <div class="code">ToggleClass("glow")    Animate("transform", ...)    style.width = v</div>
+        </div>
+
+        <!-- 4. Events bubble: one listener on the document root sees them all. -->
+        <div class="panel card">
+            <div class="section">4  Event log (bubbling)</div>
+            <div id="log" class="parchment"/>
+            <div class="code">document.root.On&lt;UIClickEvent&gt;(...)    On&lt;UIChangeEvent&gt;(...)</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,172 @@
+/* Elements & Events demo layout. Frames, buttons and controls come from app:/data/UI/Shared/theme.rcss. */
+
+body {
+	/* Dim the 3D scene behind the overlay so the cards read well. */
+	background-color: rgba(10, 6, 2, 150);
+}
+
+#header {
+	position: absolute;
+	left: 0;
+	top: 20dp;
+	width: 100vw;
+	text-align: center;
+}
+
+#cards {
+	position: absolute;
+	left: 6vw;
+	top: 120dp;
+	width: 88vw;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.card {
+	/* Anchors the absolutely positioned code hint. */
+	position: relative;
+	width: 42.5vw;
+	height: 260dp;
+	margin-bottom: 22dp;
+}
+
+.card .section {
+	margin-top: 0dp;
+}
+
+.card button {
+	margin-left: 10dp;
+}
+
+/* The code hint at the bottom of each card. */
+.code {
+	position: absolute;
+	left: 22dp;
+	bottom: 16dp;
+	font-size: 13dp;
+	color: #d8bf92;
+}
+
+/* ---------- 1 ---------- */
+
+/* 34 px pixel art at 2x. */
+.counter-icon {
+	width: 68dp;
+	height: 68dp;
+	margin-right: 14dp;
+}
+
+#count {
+	font-size: 72dp;
+	color: #ffe7a8;
+	font-effect: outline(3dp #3b2414);
+}
+
+/* RestartAnimation replays this when the script sets the class again. */
+#count.pop {
+	animation: 0.35s back-out 1 pop;
+}
+
+@keyframes pop {
+	from { transform: scale(1.35); color: #ffffff; }
+	to { transform: scale(1.0); color: #ffe7a8; }
+}
+
+/* ---------- 2 ---------- */
+
+#task-text {
+	flex: 1;
+}
+
+#task-list {
+	margin-top: 10dp;
+	height: 118dp;
+	overflow-y: auto;
+}
+
+/* Created from code: CreateElement("div") + SetClass("task", true). */
+.task {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 4dp 6dp 4dp 12dp;
+	margin-bottom: 4dp;
+	color: #4a3423;
+	decorator: ninepatch(inset-beige, inset-beige-inner);
+}
+
+.task span {
+	flex: 1;
+}
+
+.task button {
+	padding: 4dp 12dp 8dp 12dp;
+	font-size: 13dp;
+}
+
+.task button:active {
+	padding: 6dp 12dp 6dp 12dp;
+}
+
+/* Sits over the empty list instead of below it. */
+#task-empty {
+	position: absolute;
+	left: 22dp;
+	top: 120dp;
+}
+
+/* ---------- 3 ---------- */
+
+#stage {
+	width: 160dp;
+	height: 150dp;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* The coin. Toggling .glow swaps it for a crystal: a class can change any property. */
+#orb {
+	width: 68dp;
+	height: 68dp;
+	decorator: image(item-coin);
+}
+
+#orb.glow {
+	decorator: image(item-gem);
+}
+
+.controls {
+	flex: 1;
+	margin-left: 16dp;
+}
+
+.controls button {
+	margin: 0dp 0dp 10dp 0dp;
+}
+
+.controls input.range {
+	flex: 1;
+	margin-left: 12dp;
+}
+
+/* ---------- 4 ---------- */
+
+#log {
+	height: 170dp;
+	overflow: hidden;
+	font-size: 14dp;
+}
+
+.entry {
+	display: block;
+	padding: 2dp 0dp;
+	color: #4a3423;
+}
+
+.entry .kind {
+	font-family: "Kenney Future";
+	color: #9a4a1c;
+}

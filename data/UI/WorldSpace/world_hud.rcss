@@ -1,0 +1,67 @@
+/* Screen-space overlay of the world-space demo. */
+
+#hint {
+	position: absolute;
+	left: 24dp;
+	bottom: 24dp;
+	width: 430dp;
+	padding: 16dp 18dp;
+}
+
+#hint .title {
+	font-size: 24dp;
+}
+
+.page {
+	margin-top: 10dp;
+	font-size: 14dp;
+}
+
+.gap {
+	margin-top: 6dp;
+}
+
+.keys {
+	margin-top: 10dp;
+	font-size: 13dp;
+	color: #ecd7ad;
+}
+
+/* The layer the markers live in: the whole screen, letting clicks through to the scene. */
+#markers {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	pointer-events: none;
+}
+
+/*
+ * A marker is positioned by its top-left corner (style.left / style.top from code), so the
+ * content is shifted left by half its width to centre it on the point.
+ */
+.marker {
+	position: absolute;
+	width: 180dp;
+	margin-left: -90dp;
+	text-align: center;
+	pointer-events: none;
+}
+
+/* A white glyph tinted gold. */
+.marker .diamond {
+	width: 26dp;
+	height: 26dp;
+	margin-left: 77dp;
+	decorator: image(glyph-target);
+	image-color: #ffd36a;
+}
+
+.marker .label {
+	margin-top: 4dp;
+	font-family: "Kenney Future";
+	font-size: 14dp;
+	color: #ffe7a8;
+	font-effect: outline(2dp #3b2414);
+}

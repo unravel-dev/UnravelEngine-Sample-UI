@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>Nameplate</title>
+    <link type="text/rcss" href="engine:/data/ui/rml.rcss"/>
+    <link type="text/rcss" href="app:/data/UI/Shared/atlas.rcss"/>
+    <link type="text/rcss" href="app:/data/UI/Shared/theme.rcss"/>
+    <link type="text/rcss" href="app:/data/UI/WorldSpace/nameplate.rcss"/>
+</head>
+<!--
+    One small world-space document per target. Every UI Document has its own context, so the
+    three nameplates each have their own model "plate" (Nameplate.cs binds it).
+-->
+<body data-model="plate">
+    <div id="plate" class="panel">
+        <div class="row">
+            <span class="name">{{ name }}</span>
+            <div class="spacer"/>
+            <span class="hp number" data-class-low="health <= 30">{{ health }}/{{ maxHealth }}</span>
+        </div>
+        <progress max="100" data-attr-value="health" data-class-low="health <= 30"/>
+        <div class="row buttons">
+            <button class="accent" data-event-click="Hit()">Hit</button>
+            <button data-event-click="Heal()">Heal</button>
+        </div>
+    </div>
+</body>
+</html>

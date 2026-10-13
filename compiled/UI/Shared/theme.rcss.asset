@@ -1,0 +1,337 @@
+/*
+ * UISample shared theme: a fantasy RPG skin built from the sprite atlas (atlas.rcss).
+ * Every document links, in this order:
+ *
+ *     <link type="text/rcss" href="engine:/data/ui/rml.rcss"/>
+ *     <link type="text/rcss" href="app:/data/UI/Shared/atlas.rcss"/>
+ *     <link type="text/rcss" href="app:/data/UI/Shared/theme.rcss"/>
+ *
+ * How the art is applied:
+ *   - decorator: ninepatch(sprite, sprite-inner) stretches a frame: the corners keep their size,
+ *     the edges and the middle stretch. Panels, buttons, text fields and checkboxes use it.
+ *   - decorator: tiled-horizontal(left, middle, right) repeats the middle between two caps:
+ *     progress bars and slider tracks.
+ *   - decorator: image(sprite) draws one sprite; <img sprite="name"/> does the same in markup.
+ *   - image-color multiplies every decorator of an element: hover brightens a dimmed button.
+ *
+ * RCSS reminders: lengths in dp, rgba() alpha 0-255, borders take no style keyword, a button
+ * only takes a size once it is display: block.
+ */
+
+@font-face {
+	font-family: "Kenney Future";
+	src: "app:/data/Fonts/KenneyFuture.ttf";
+}
+
+@font-face {
+	font-family: "Kenney Mini Square";
+	src: "app:/data/Fonts/KenneyMiniSquare.ttf";
+}
+
+/* ---------- page ---------- */
+
+html, body {
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Inter;
+	font-size: 17dp;
+	color: #4a3423;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+/* ---------- frames ---------- */
+
+/* A wooden frame. Text on it is light. */
+.panel {
+	box-sizing: border-box;
+	padding: 20dp 22dp;
+	color: #fbe9c4;
+	decorator: ninepatch(panel-brown, panel-brown-inner);
+}
+
+/* A parchment page, inside a frame or on its own. Text on it is dark. */
+.parchment {
+	box-sizing: border-box;
+	padding: 12dp 14dp;
+	color: #4a3423;
+	decorator: ninepatch(inset-beige, inset-beige-inner);
+}
+
+/* ---------- type ---------- */
+
+.title {
+	font-family: "Kenney Future";
+	font-size: 36dp;
+	color: #ffe7a8;
+	font-effect: outline(3dp #3b2414), shadow(0dp 4dp #23130a);
+}
+
+.subtitle {
+	font-size: 15dp;
+	color: #ecd7ad;
+	margin-top: 6dp;
+}
+
+/* Small heading above a group. */
+.section {
+	display: block;
+	font-family: "Kenney Future";
+	font-size: 17dp;
+	letter-spacing: 1dp;
+	color: #ffd27a;
+	font-effect: outline(2dp #3b2414);
+	margin: 16dp 0dp 8dp 0dp;
+}
+
+.parchment .section {
+	color: #7a4f2c;
+	font-effect: none;
+}
+
+/* Numbers in the pixel font: gold, health, counters. */
+.number {
+	font-family: "Kenney Mini Square";
+}
+
+.muted { color: #d8bf92; }
+.parchment .muted { color: #8a6a4a; }
+.good { color: #9be08f; }
+.parchment .good { color: #2f7d3a; }
+.warn { color: #ffc35a; }
+.parchment .warn { color: #b06d12; }
+.bad { color: #ff8c7a; }
+.parchment .bad { color: #b03a2e; }
+
+.row {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.column {
+	display: flex;
+	flex-direction: column;
+}
+
+.spacer { flex: 1; }
+
+/* A sprite as an inline icon: <img class="icon" sprite="glyph-music-on"/>. */
+img.icon {
+	width: 22dp;
+	height: 22dp;
+	margin-right: 8dp;
+}
+
+/* ---------- buttons ---------- */
+
+/*
+ * Beige stone is the default; .accent is wood, .ghost is grey. The pressed sprite has no
+ * bottom shadow, so a press looks like the button sinks; the padding moves the label with it.
+ */
+button {
+	display: block;
+	padding: 9dp 18dp 13dp 18dp;
+	font-family: "Kenney Future";
+	font-size: 15dp;
+	text-align: center;
+	color: #5c3d26;
+	decorator: ninepatch(button-beige, button-beige-inner);
+	image-color: #ece2d2;
+}
+
+button:hover {
+	image-color: #ffffff;
+}
+
+button:active {
+	padding: 11dp 18dp 11dp 18dp;
+	decorator: ninepatch(button-beige-pressed, button-beige-pressed-inner);
+}
+
+button.accent {
+	color: #fbe9c4;
+	decorator: ninepatch(button-brown, button-brown-inner);
+}
+
+button.accent:active {
+	decorator: ninepatch(button-brown-pressed, button-brown-pressed-inner);
+}
+
+button.ghost {
+	color: #2e2e3a;
+	decorator: ninepatch(button-grey, button-grey-inner);
+}
+
+button.ghost:active {
+	decorator: ninepatch(button-grey-pressed, button-grey-pressed-inner);
+}
+
+button:disabled, button:disabled:hover {
+	opacity: 1;
+	color: #8d7a66;
+	image-color: #9a948c;
+}
+
+/* An icon inside a button sits beside its label. */
+button img {
+	width: 20dp;
+	height: 20dp;
+	margin-right: 6dp;
+	vertical-align: middle;
+}
+
+/* "Back to menu" in the top left corner of every demo. The z-index keeps it above the
+ * full-width page headers that come after it in the markup: the element on top takes the click. */
+#back {
+	position: absolute;
+	left: 20dp;
+	top: 18dp;
+	z-index: 10;
+}
+
+/* ---------- text fields ---------- */
+
+input.text {
+	height: 38dp;
+	padding: 9dp 12dp;
+	color: #3b2414;
+	background-color: rgba(0, 0, 0, 0);
+	border: 0dp;
+	decorator: ninepatch(inset-beigelight, inset-beigelight-inner);
+	image-color: #efe6d6;
+}
+
+input.text:focus-visible {
+	image-color: #ffffff;
+}
+
+input.text::placeholder {
+	color: #9a7b5b;
+}
+
+/* ---------- sliders ---------- */
+
+input.range {
+	height: 18dp;
+	margin: 6dp 0dp;
+	border-radius: 0dp;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+input.range slidertrack {
+	background-color: rgba(0, 0, 0, 0);
+	decorator: tiled-horizontal(bar-back-l, bar-back-m, bar-back-r);
+}
+
+input.range sliderprogress, input.range:hover sliderprogress, input.range:active sliderprogress {
+	background-color: rgba(0, 0, 0, 0);
+	decorator: tiled-horizontal(bar-blue-l, bar-blue-m, bar-blue-r);
+}
+
+input.range sliderbar, input.range sliderbar:disabled, input.range:hover sliderbar, input.range sliderbar:active {
+	width: 28dp;
+	height: 30dp;
+	margin-top: -6dp;
+	background-color: rgba(0, 0, 0, 0);
+	decorator: image(round-beige);
+}
+
+/* ---------- checkboxes ---------- */
+
+/* One sprite per state: the atlas holds the box and the box with its tick. */
+input.checkbox, input.checkbox:hover, input.checkbox:active {
+	width: 30dp;
+	height: 33dp;
+	border: 0dp;
+	background-color: rgba(0, 0, 0, 0);
+	decorator: image(checkbox-off);
+}
+
+input.checkbox:checked, input.checkbox:checked:hover {
+	background-color: rgba(0, 0, 0, 0);
+	decorator: image(checkbox-on);
+}
+
+/* ---------- dropdowns ---------- */
+
+select {
+	width: 170dp;
+	height: 38dp;
+	color: #3b2414;
+	background-color: rgba(0, 0, 0, 0);
+	border: 0dp;
+	decorator: ninepatch(inset-beigelight, inset-beigelight-inner);
+}
+
+select selectvalue {
+	padding: 9dp 12dp;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+select selectarrow, select selectarrow:hover, select:focus-visible selectarrow,
+select selectarrow:active, select selectarrow:checked {
+	width: 30dp;
+	border-left: 0dp;
+	background-color: rgba(0, 0, 0, 0);
+	decorator: image(arrow-brown-right scale-none center center);
+}
+
+select selectbox {
+	padding: 6dp;
+	color: #3b2414;
+	background-color: rgba(0, 0, 0, 0);
+	border: 0dp;
+	decorator: ninepatch(panel-beigelight, panel-beigelight-inner);
+}
+
+/* rml.rcss gives options dark text on white; keep it dark on the parchment list. */
+select selectbox option {
+	padding: 6dp 10dp;
+	color: #3b2414;
+}
+
+select selectbox option:hover {
+	background-color: rgba(122, 79, 44, 60);
+}
+
+select selectbox option:checked {
+	background-color: rgba(122, 79, 44, 110);
+	color: #fbe9c4;
+}
+
+/* ---------- bars ---------- */
+
+/* The fill is a sized child of the bar: its caps move with the value. */
+progress {
+	display: block;
+	width: 100%;
+	height: 18dp;
+	border: 0dp;
+	border-radius: 0dp;
+	background-color: rgba(0, 0, 0, 0);
+	decorator: tiled-horizontal(bar-back-l, bar-back-m, bar-back-r);
+}
+
+progress fill {
+	border-radius: 0dp;
+	background-color: rgba(0, 0, 0, 0);
+	decorator: tiled-horizontal(bar-green-l, bar-green-m, bar-green-r);
+}
+
+progress.red fill, progress.low fill {
+	decorator: tiled-horizontal(bar-red-l, bar-red-m, bar-red-r);
+}
+
+progress.gold fill, progress.heavy fill {
+	decorator: tiled-horizontal(bar-yellow-l, bar-yellow-m, bar-yellow-r);
+}
+
+progress.blue fill {
+	decorator: tiled-horizontal(bar-blue-l, bar-blue-m, bar-blue-r);
+}

@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title>Kiosk</title>
+    <link type="text/rcss" href="engine:/data/ui/rml.rcss"/>
+    <link type="text/rcss" href="app:/data/UI/Shared/atlas.rcss"/>
+    <link type="text/rcss" href="app:/data/UI/Shared/theme.rcss"/>
+    <link type="text/rcss" href="app:/data/UI/WorldSpace/kiosk.rcss"/>
+</head>
+<!--
+    A world-space document: the UI Document component renders it into a texture of its "size"
+    (640 x 420 pixels here) and draws that on a quad at the entity's transform. Pixels per world
+    unit sets the quad's size in metres (640 / 250 = 2.56 m wide). The mouse ray hits the quad, so
+    hover and clicks work as on screen. KioskPanel.cs binds the model "kiosk".
+-->
+<body data-model="kiosk">
+    <div id="frame" class="panel">
+        <div class="row head">
+            <img class="head-icon" sprite="item-gem"/>
+            <div class="title">Showpiece</div>
+            <div class="spacer"/>
+            <div class="badge">World space</div>
+        </div>
+
+        <div class="parchment page">
+            <div class="section">Colour</div>
+            <!-- Fixed swatches: each tints the same stone button with its own class and passes its index to Pick. -->
+            <div class="row swatches">
+                <div class="swatch c0" data-class-selected="selected == 0" data-event-click="Pick(0)"><img sprite="glyph-check" data-visible="selected == 0"/></div>
+                <div class="swatch c1" data-class-selected="selected == 1" data-event-click="Pick(1)"><img sprite="glyph-check" data-visible="selected == 1"/></div>
+                <div class="swatch c2" data-class-selected="selected == 2" data-event-click="Pick(2)"><img sprite="glyph-check" data-visible="selected == 2"/></div>
+                <div class="swatch c3" data-class-selected="selected == 3" data-event-click="Pick(3)"><img sprite="glyph-check" data-visible="selected == 3"/></div>
+                <div class="swatch c4" data-class-selected="selected == 4" data-event-click="Pick(4)"><img sprite="glyph-check" data-visible="selected == 4"/></div>
+                <div class="swatch c5" data-class-selected="selected == 5" data-event-click="Pick(5)"><img sprite="glyph-check" data-visible="selected == 5"/></div>
+            </div>
+
+            <div class="section">Spin speed</div>
+            <div class="row">
+                <input type="range" min="0" max="240" step="5" data-value="spinSpeed"/>
+                <span class="value number">{{ spinSpeed }}</span>
+            </div>
+
+            <div class="row actions">
+                <label><input type="checkbox" data-checked="bob"/> Bob up and down</label>
+                <div class="spacer"/>
+                <button class="accent" data-event-click="Pulse()"><img sprite="glyph-star"/>Pulse</button>
+            </div>
+        </div>
+
+        <div class="footer muted">{{ clicks }} button press{{ clicks == 1 ? '' : 'es' }} on this panel</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<html>
+<head>
+    <title>UISample Menu</title>
+    <link type="text/rcss" href="engine:/data/ui/rml.rcss"/>
+    <link type="text/rcss" href="app:/data/UI/Shared/atlas.rcss"/>
+    <link type="text/rcss" href="app:/data/UI/Shared/theme.rcss"/>
+    <link type="text/rcss" href="app:/data/UI/Menu/main_menu.rcss"/>
+</head>
+<!--
+    data-model="menu": every {{ expression }} and data-* attribute below reads the C# object
+    that MainMenuController binds to the model named "menu" (see MainMenuController.cs).
+    Out of play mode nothing is bound, so the editor shows the bare template.
+-->
+<body data-model="menu">
+    <div id="menu" class="panel">
+        <div class="title">UI Sample</div>
+        <div class="subtitle">RmlUi documents driven from C#: elements and events, data models, and panels in the 3D world.</div>
+
+        <div class="section">Choose a demo</div>
+        <!--
+            data-for repeats this element once per entry of the C# list "demos": "demo" is the entry
+            and "i" its index. data-event-click calls the model's public Open(int) with that index;
+            data-event-mouseover calls Hover() for the hover sound. data-attr-sprite picks the
+            entry's icon from the atlas.
+        -->
+        <div class="demo parchment" data-for="demo, i : demos" data-event-click="Open(i)" data-event-mouseover="Hover()">
+            <div class="demo-badge"><img data-attr-sprite="demo.icon"/></div>
+            <div class="demo-text">
+                <div class="demo-name">{{ demo.title }}</div>
+                <div class="demo-info">{{ demo.description }}</div>
+            </div>
+            <img class="demo-arrow" sprite="arrow-brown-right"/>
+        </div>
+
+        <div class="section">Sound</div>
+        <div class="row setting">
+            <img class="icon" sprite="glyph-audio-on"/>
+            <span class="label">Master volume</span>
+            <!-- data-value binds both ways: dragging writes masterVolume, and a change from code moves the slider. -->
+            <input type="range" min="0" max="1" step="0.05" data-value="masterVolume"/>
+            <!-- "| percent" pipes the value through a transform the controller registers. -->
+            <span class="value number">{{ masterVolume | percent }}</span>
+        </div>
+        <div class="row setting">
+            <!-- An expression can choose between two sprite names. -->
+            <img class="icon" data-attr-sprite="musicOn ? 'glyph-music-on' : 'glyph-music-off'"/>
+            <span class="label">Music</span>
+            <input type="checkbox" data-checked="musicOn"/>
+            <span class="state muted">{{ musicOn ? 'on' : 'off' }}</span>
+        </div>
+
+        <div class="row footer">
+            <span class="muted">Esc returns here from any demo.</span>
+            <div class="spacer"/>
+            <!-- onclick calls a public method of a script on this document's entity. -->
+            <button class="ghost" onclick="Quit"><img sprite="glyph-exit"/>Quit</button>
+        </div>
+    </div>
+</body>
+</html>

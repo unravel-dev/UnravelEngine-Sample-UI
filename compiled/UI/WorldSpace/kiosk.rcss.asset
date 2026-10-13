@@ -1,0 +1,109 @@
+/*
+ * Kiosk panel. A world-space document is laid out at its own size with 1 dp = 1 texture pixel,
+ * so 100vw x 100vh is the whole 640 x 420 texture.
+ */
+
+body {
+	font-size: 20dp;
+}
+
+#frame {
+	width: 100vw;
+	height: 100vh;
+	padding: 18dp 22dp;
+}
+
+.head-icon {
+	width: 52dp;
+	height: 52dp;
+	margin-right: 10dp;
+}
+
+.head .title {
+	font-size: 34dp;
+}
+
+.badge {
+	padding: 6dp 12dp 10dp 12dp;
+	font-family: "Kenney Future";
+	font-size: 13dp;
+	color: #5c3d26;
+	decorator: ninepatch(button-beige, button-beige-inner);
+}
+
+.page {
+	margin-top: 8dp;
+	padding: 6dp 18dp 14dp 18dp;
+}
+
+.section {
+	font-size: 16dp;
+	margin: 10dp 0dp 6dp 0dp;
+}
+
+/*
+ * One white stone button, tinted per swatch: image-color multiplies the sprite, so the white
+ * button (made for this in the atlas) takes the tint's colour.
+ */
+.swatch {
+	width: 66dp;
+	height: 58dp;
+	margin-right: 14dp;
+	decorator: ninepatch(square-white, square-white-inner);
+}
+
+.swatch.selected {
+	decorator: ninepatch(square-white-pressed, square-white-pressed-inner);
+	margin-top: 4dp;
+	height: 54dp;
+}
+
+/* The tick of the selected swatch, dark on any tint. */
+.swatch img {
+	display: block;
+	width: 30dp;
+	height: 30dp;
+	margin: 10dp 0dp 0dp 18dp;
+	image-color: #3b2414;
+}
+
+.c0 { image-color: #ffffff; }
+.c1 { image-color: #ff7a8c; }
+.c2 { image-color: #ffbf55; }
+.c3 { image-color: #7fe8b0; }
+.c4 { image-color: #6fcfff; }
+.c5 { image-color: #c99bff; }
+
+input.range {
+	flex: 1;
+}
+
+.value {
+	width: 80dp;
+	text-align: right;
+	font-size: 26dp;
+	color: #7a4f2c;
+}
+
+.actions {
+	margin-top: 14dp;
+}
+
+.actions input.checkbox {
+	margin-right: 10dp;
+}
+
+.actions button {
+	font-size: 20dp;
+	padding: 10dp 26dp 14dp 26dp;
+}
+
+.actions button:active {
+	padding: 12dp 26dp 12dp 26dp;
+}
+
+.footer {
+	margin-top: 12dp;
+	font-size: 15dp;
+	text-align: center;
+}
