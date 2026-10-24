@@ -73,10 +73,13 @@ namespace UISample
             {
                 selected = index;
                 clicks++;
-                // SetColor on a model gives that renderer its own copy of the material the first
-                // time, so other entities using the same material keep their colour.
+                // The material instance changes this renderer only, so other entities using the same
+                // shared material keep their colour.
                 var model = showpiece ? showpiece.GetComponent<ModelComponent>() : null;
-                model?.SetColor(MaterialProperty.BaseColor, Colors[index]);
+                if (model != null)
+                {
+                    model.GetMaterialInstance().baseColor = Colors[index];
+                }
                 UISounds.Click();
             }
 
