@@ -170,3 +170,96 @@ body {
 	font-family: "Kenney Future";
 	color: #9a4a1c;
 }
+
+/* ---------- small screens ---------- */
+
+/* Four cards do not fit a small screen: they scroll, and the code hints give way. */
+@media (max-height: 760dp) {
+	#cards {
+		bottom: 2vh;
+		height: auto;
+		overflow-y: auto;
+	}
+}
+
+@media (max-height: 560dp) {
+	#header {
+		top: 8dp;
+	}
+
+	.subtitle {
+		display: none;
+	}
+
+	#cards {
+		top: 44dp;
+		left: 4.5vw;
+		width: 91vw;
+	}
+
+	.card {
+		width: 44vw;
+		height: 214dp;
+		margin-bottom: 10dp;
+	}
+
+	.code {
+		display: none;
+	}
+
+	.counter-icon {
+		width: 48dp;
+		height: 48dp;
+	}
+
+	#count {
+		font-size: 48dp;
+	}
+
+	#task-list {
+		height: 96dp;
+	}
+
+	#task-empty {
+		left: 14dp;
+		top: 90dp;
+	}
+
+	#stage {
+		width: 100dp;
+		height: 130dp;
+	}
+
+	.controls button {
+		margin-bottom: 6dp;
+	}
+
+	#log {
+		height: 150dp;
+		font-size: 12dp;
+	}
+}
+
+@media (max-width: 760dp) {
+	#header {
+		top: 11vh;
+	}
+
+	#cards {
+		top: 22vh;
+		left: 4vw;
+		width: 92vw;
+		bottom: 2vh;
+		height: auto;
+		overflow-y: auto;
+	}
+
+	.card {
+		width: 90vw;
+		height: 230dp;
+	}
+
+	.code {
+		display: none;
+	}
+}

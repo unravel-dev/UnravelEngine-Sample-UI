@@ -16,6 +16,10 @@
  *
  * RCSS reminders: lengths in dp, rgba() alpha 0-255, borders take no style keyword, a button
  * only takes a size once it is display: block.
+ *
+ * A dp is the same apparent size on any screen, so a phone has less room, not smaller pixels: about
+ * 830 x 380 dp in landscape. Each page rearranges itself in @media (max-height: 560dp) and
+ * (max-width: 760dp) blocks; the shared rules for small screens are at the end of this file.
  */
 
 @font-face {
@@ -334,4 +338,59 @@ progress.gold fill, progress.heavy fill {
 
 progress.blue fill {
 	decorator: tiled-horizontal(bar-blue-l, bar-blue-m, bar-blue-r);
+}
+
+/* ---------- small screens ---------- */
+
+@media (max-height: 560dp) {
+	.title {
+		font-size: 22dp;
+		font-effect: outline(2dp #3b2414), shadow(0dp 2dp #23130a);
+	}
+
+	.subtitle {
+		margin-top: 2dp;
+		font-size: 12dp;
+	}
+
+	.section {
+		margin: 6dp 0dp 4dp 0dp;
+		font-size: 13dp;
+	}
+
+	.panel {
+		padding: 10dp 14dp;
+	}
+
+	button {
+		padding: 5dp 12dp 8dp 12dp;
+		font-size: 12dp;
+	}
+
+	button:active {
+		padding: 7dp 12dp 6dp 12dp;
+	}
+
+	button img {
+		width: 14dp;
+		height: 14dp;
+		margin-right: 4dp;
+	}
+
+	/* Clear of a camera cutout, on either side of a turned phone. */
+	#back {
+		left: 4.5vw;
+		top: 8dp;
+	}
+}
+
+@media (max-width: 760dp) {
+	.title {
+		font-size: 24dp;
+	}
+
+	#back {
+		left: 3vw;
+		top: 5vh;
+	}
 }

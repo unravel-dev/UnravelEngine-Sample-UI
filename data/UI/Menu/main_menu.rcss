@@ -100,3 +100,134 @@
 	margin-top: 20dp;
 	font-size: 14dp;
 }
+
+/* ---------- small screens ---------- */
+
+/* A laptop keeps the column with smaller cards, so Quit stays on screen. */
+@media (max-height: 820dp) {
+	#menu {
+		top: 3vh;
+		padding: 16dp 24dp;
+	}
+
+	#menu .title {
+		font-size: 34dp;
+	}
+
+	.demo {
+		margin-bottom: 6dp;
+		padding: 6dp 14dp 6dp 6dp;
+	}
+
+	.demo-badge {
+		width: 60dp;
+		height: 60dp;
+	}
+
+	.demo-badge img {
+		width: 50dp;
+		height: 50dp;
+	}
+
+	.footer {
+		margin-top: 10dp;
+	}
+}
+
+/* A short screen fits the whole menu: the demos and the settings side by side. */
+@media (max-height: 560dp) {
+	#menu {
+		left: 4.5vw;
+		right: 4.5vw;
+		top: 4vh;
+		width: auto;
+		padding: 12dp 18dp 10dp 18dp;
+	}
+
+	#menu .title {
+		font-size: 24dp;
+	}
+
+	#demos,
+	#sound {
+		display: flex;
+		flex-direction: row;
+		gap: 8dp;
+	}
+
+	.demo {
+		flex: 1;
+		margin-bottom: 0dp;
+		padding: 6dp 8dp 6dp 6dp;
+	}
+
+	.demo-badge {
+		width: 44dp;
+		height: 44dp;
+		margin-right: 8dp;
+	}
+
+	.demo-badge img {
+		width: 36dp;
+		height: 36dp;
+		margin: 3dp 0dp 0dp 4dp;
+	}
+
+	.demo-name {
+		font-size: 12dp;
+	}
+
+	.demo-info,
+	.demo-arrow {
+		display: none;
+	}
+
+	.setting {
+		flex: 1;
+		margin-bottom: 0dp;
+		font-size: 13dp;
+	}
+
+	.setting .label {
+		width: 100dp;
+	}
+
+	.setting .value {
+		width: 50dp;
+		font-size: 15dp;
+	}
+
+	.footer {
+		margin-top: 8dp;
+		font-size: 12dp;
+	}
+}
+
+/* A narrow screen stacks them in a menu as wide as the screen. */
+@media (max-width: 760dp) {
+	#menu {
+		left: 3vw;
+		right: 3vw;
+		top: 10vh;
+		width: auto;
+		padding: 16dp;
+	}
+
+	#menu .title {
+		font-size: 32dp;
+	}
+
+	.demo-badge {
+		width: 60dp;
+		height: 60dp;
+	}
+
+	.demo-badge img {
+		width: 50dp;
+		height: 50dp;
+	}
+
+	.setting .label {
+		width: 110dp;
+	}
+}

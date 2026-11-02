@@ -23,30 +23,34 @@
             data-event-mouseover calls Hover() for the hover sound. data-attr-sprite picks the
             entry's icon from the atlas.
         -->
-        <div class="demo parchment" data-for="demo, i : demos" data-event-click="Open(i)" data-event-mouseover="Hover()">
-            <div class="demo-badge"><img data-attr-sprite="demo.icon"/></div>
-            <div class="demo-text">
-                <div class="demo-name">{{ demo.title }}</div>
-                <div class="demo-info">{{ demo.description }}</div>
+        <div id="demos">
+            <div class="demo parchment" data-for="demo, i : demos" data-event-click="Open(i)" data-event-mouseover="Hover()">
+                <div class="demo-badge"><img data-attr-sprite="demo.icon"/></div>
+                <div class="demo-text">
+                    <div class="demo-name">{{ demo.title }}</div>
+                    <div class="demo-info">{{ demo.description }}</div>
+                </div>
+                <img class="demo-arrow" sprite="arrow-brown-right"/>
             </div>
-            <img class="demo-arrow" sprite="arrow-brown-right"/>
         </div>
 
         <div class="section">Sound</div>
-        <div class="row setting">
-            <img class="icon" sprite="glyph-audio-on"/>
-            <span class="label">Master volume</span>
-            <!-- data-value binds both ways: dragging writes masterVolume, and a change from code moves the slider. -->
-            <input type="range" min="0" max="1" step="0.05" data-value="masterVolume"/>
-            <!-- "| percent" pipes the value through a transform the controller registers. -->
-            <span class="value number">{{ masterVolume | percent }}</span>
-        </div>
-        <div class="row setting">
-            <!-- An expression can choose between two sprite names. -->
-            <img class="icon" data-attr-sprite="musicOn ? 'glyph-music-on' : 'glyph-music-off'"/>
-            <span class="label">Music</span>
-            <input type="checkbox" data-checked="musicOn"/>
-            <span class="state muted">{{ musicOn ? 'on' : 'off' }}</span>
+        <div id="sound">
+            <div class="row setting">
+                <img class="icon" sprite="glyph-audio-on"/>
+                <span class="label">Master volume</span>
+                <!-- data-value binds both ways: dragging writes masterVolume, and a change from code moves the slider. -->
+                <input type="range" min="0" max="1" step="0.05" data-value="masterVolume"/>
+                <!-- "| percent" pipes the value through a transform the controller registers. -->
+                <span class="value number">{{ masterVolume | percent }}</span>
+            </div>
+            <div class="row setting">
+                <!-- An expression can choose between two sprite names. -->
+                <img class="icon" data-attr-sprite="musicOn ? 'glyph-music-on' : 'glyph-music-off'"/>
+                <span class="label">Music</span>
+                <input type="checkbox" data-checked="musicOn"/>
+                <span class="state muted">{{ musicOn ? 'on' : 'off' }}</span>
+            </div>
         </div>
 
         <div class="row footer">

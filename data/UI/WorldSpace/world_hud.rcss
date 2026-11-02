@@ -64,3 +64,46 @@
 	color: #ffe7a8;
 	font-effect: outline(2dp #3b2414);
 }
+
+/* ---------- small screens ---------- */
+
+@media (max-height: 560dp) {
+	#hint {
+		left: 4.5vw;
+		bottom: 2vh;
+		width: 300dp;
+		padding: 8dp 12dp;
+	}
+
+	#hint .title {
+		font-size: 14dp;
+	}
+
+	.page {
+		margin-top: 4dp;
+		padding: 5dp 8dp;
+		font-size: 10dp;
+	}
+
+	.gap {
+		margin-top: 3dp;
+	}
+
+	.keys {
+		margin-top: 4dp;
+		font-size: 10dp;
+	}
+
+	.marker .label {
+		font-size: 11dp;
+	}
+}
+
+@media (max-width: 760dp) {
+	#hint {
+		left: 3vw;
+		bottom: 2vh;
+		width: 94vw;
+		padding: 12dp;
+	}
+}

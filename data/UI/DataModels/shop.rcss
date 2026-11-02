@@ -185,3 +185,177 @@ progress {
 	font-family: "Kenney Future";
 	color: #9a4a1c;
 }
+
+/* ---------- small screens ---------- */
+
+/* The two columns keep to the screen and scroll inside; the rows drop what they can. */
+@media (max-height: 760dp) {
+	#shop,
+	#player {
+		bottom: 2vh;
+		height: auto;
+		overflow-y: auto;
+	}
+}
+
+@media (max-height: 560dp) {
+	#header {
+		top: 8dp;
+	}
+
+	#header .subtitle,
+	.item-info {
+		display: none;
+	}
+
+	#shop {
+		left: 4.5vw;
+		top: 40dp;
+		width: 52vw;
+	}
+
+	#player {
+		right: 4.5vw;
+		top: 40dp;
+		width: 37vw;
+	}
+
+	.item {
+		padding: 4dp 8dp 4dp 4dp;
+		margin-bottom: 4dp;
+	}
+
+	.slot {
+		width: 44dp;
+		height: 44dp;
+		margin-right: 8dp;
+	}
+
+	.slot img {
+		width: 36dp;
+		height: 36dp;
+		margin: 3dp 0dp 0dp 4dp;
+	}
+
+	.item-name {
+		font-size: 12dp;
+	}
+
+	.item-rarity,
+	.small,
+	label.toggle {
+		font-size: 11dp;
+	}
+
+	.owned {
+		font-size: 13dp;
+	}
+
+	.price {
+		width: 64dp;
+		margin-right: 2dp;
+		font-size: 14dp;
+	}
+
+	.price img {
+		width: 18dp;
+		height: 18dp;
+		margin-right: 2dp;
+	}
+
+	.item button {
+		margin-left: 4dp;
+		padding: 4dp 7dp 7dp 7dp;
+		font-size: 10dp;
+	}
+
+	.item button:active {
+		padding: 6dp 7dp 5dp 7dp;
+	}
+
+	.purse-coin {
+		width: 36dp;
+		height: 36dp;
+		margin-right: 6dp;
+	}
+
+	#gold {
+		font-size: 26dp;
+	}
+
+	#player button {
+		margin-left: 4dp;
+	}
+
+	#message {
+		margin-top: 2dp;
+		font-size: 12dp;
+	}
+
+	.form {
+		padding: 8dp 10dp;
+		font-size: 12dp;
+	}
+
+	.field {
+		margin-bottom: 6dp;
+	}
+
+	.field .label {
+		width: 70dp;
+	}
+
+	.field select {
+		width: 120dp;
+	}
+
+	#greeting {
+		font-size: 12dp;
+	}
+}
+
+@media (max-width: 760dp) {
+	#header {
+		top: 11vh;
+	}
+
+	#header .subtitle,
+	.item-info {
+		display: none;
+	}
+
+	#shop {
+		left: 3vw;
+		top: 18vh;
+		bottom: 40vh;
+		width: 94vw;
+		height: auto;
+		overflow-y: auto;
+	}
+
+	#player {
+		left: 3vw;
+		right: auto;
+		top: 61vh;
+		bottom: 2vh;
+		width: 94vw;
+		height: auto;
+		overflow-y: auto;
+	}
+
+	.slot {
+		width: 48dp;
+		height: 48dp;
+	}
+
+	.slot img {
+		width: 40dp;
+		height: 40dp;
+		margin: 3dp 0dp 0dp 4dp;
+	}
+
+	.price {
+		width: 76dp;
+		font-size: 16dp;
+	}
+}
