@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "title": "Game UI",
+  "topic": "User interface",
+  "description": "A main menu and three scenes of game UI in an RPG skin: every element and control, data models bound to C# scripts, and UI placed in the world. Built with RmlUi documents and style sheets.",
+  "tags": [
+    "UI",
+    "RmlUi",
+    "Data Binding"
+  ],
+  "icon": "view-dashboard-outline",
+  "order": 80,
+  "added": "2026-10-13",
+  "thumbnail": "thumbnail.jpg"
+}
